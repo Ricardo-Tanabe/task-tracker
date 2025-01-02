@@ -30,7 +30,7 @@ body {
     font-weight: normal;
 }
 
-.input-conteiner {
+.input-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,20 +40,27 @@ body {
     padding: 2px;
 }
 
-.input-conteiner > input {
+.input-container > input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
+    outline: none;
     width: 100%;
     height: 100%;
+    background: none;
+    color: inherit;
+    box-shadow: none;
+    font: inherit;
+    cursor: text;
+    font-size: 12px;
 }
 
-.input-conteiner > input::placeholder {
+.input-container > input::placeholder {
     color: var(--gray-placeholder-color);
 }
 
-.input-conteiner > img {
+.input-container > img {
     width: 35px;
     height: 30px;
     min-width: 35px;
@@ -71,7 +78,7 @@ body {
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid var(--gray-element-color);
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .checked {
@@ -85,6 +92,7 @@ body {
     margin-right: 8px;
     min-width: 13px;
     min-height: 13px;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 1);
     overflow: hidden;
     z-index: 1;
 }
@@ -96,28 +104,59 @@ body {
 .task {
     display: inline-block;
     white-space: nowrap;
-    overflow: hidden;
-    /* text-overflow: ellipsis; */
-    z-index: 0;
-    /* animation: slideIn 5s linear infinite; */
+    text-decoration-line: none;
+}
+
+.animation {
+    animation: slideIn 10s infinite;
+    animation-fill-mode: forwards;
 }
 
 .delete {
+    position: absolute;
     margin-left: auto;
+    background-color: white;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 1);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 4px;
     width: 13px;
     height: 13px;
     min-width: 13px;
     min-height: 13px;
+    overflow: hidden;
+    cursor: pointer;
     z-index: 1;
 }
 
+.delete:hover {
+    box-shadow: 0 0 0 5px rgba(255, 0, 0, 1);
+    background-color: red
+}
+
+a {
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
 @keyframes slideIn {
-    from {
+    0% {
         transform: translateX(0);
-        clip-path: inset(0 0 0 0);
     }
-    to {
-        transform: translateX(-50%);
-        clip-path: inset(0 0 0 50%);
+    25% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(calc(-100% + 350px));
+    }
+    100% {
+        transform: translateX(calc(-100% + 350px));
     }
 }
